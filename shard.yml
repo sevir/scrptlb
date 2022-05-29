@@ -1,0 +1,17 @@
+name: scrptlb
+version: 0.1.0
+
+authors:
+  - José Francisco Rives Lirola <jose@digio.es>
+
+targets:
+  scrptlb:
+    main: src/scrptlb.cr
+
+crystal: 0.35.1
+
+dependencies:
+  lua:
+    github: veelenga/lua.cr
+
+license: MIT
