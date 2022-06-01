@@ -1,9 +1,26 @@
+require "option_parser"
 require "lua"
-require "./http_lua.cr"
+require "./modules/*"
 
-# TODO: Write documentation for `Scrptlb`
+# `Scrptlb` is "Scriptable" executor using lua 
 module Scrptlb
   VERSION = "0.1.0"
+
+  env_code_name = "CODE"
+
+  OptionParser.parse do |parser|
+    parser.banner = "Usage: scrptlb [arguments]"
+    parser.on("-n NAME", "--name=NAME", "Change the CODE variable") { |name| env_code_name = name }
+    parser.on("-h", "--help", "Show this help") do
+      puts parser
+      exit
+    end
+    parser.invalid_option do |flag|
+      STDERR.puts "ERROR: #{flag} is not a valid option."
+      STDERR.puts parser
+      exit(1)
+    end
+  end
 
   stack = Lua.load
   stack.set_global "http", HttpLua.new
