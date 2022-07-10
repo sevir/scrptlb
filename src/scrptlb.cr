@@ -26,6 +26,7 @@ module Scrptlb
 
   stack = Lua.load
   stack.set_global "http", HttpLua.new
+  stack.set_global "time", TimeLua.new
 
   code = ENV["CODE"]?;
 
