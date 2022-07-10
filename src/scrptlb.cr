@@ -4,7 +4,7 @@ require "./modules/*"
 
 # `Scrptlb` is "Scriptable" executor using lua 
 module Scrptlb
-  VERSION = "0.1.0"
+  VERSION = "1.0.0"
 
   env_code_name = "CODE"
   file_code = "scrptlb.code.lua"
@@ -13,6 +13,10 @@ module Scrptlb
     parser.banner = "Usage: scrptlb [arguments]"
     parser.on("-n NAME", "--name=NAME", "Change the CODE variable") { |name| env_code_name = name }
     parser.on("-f FILE", "--file=FILE", "Reads an specific lua code file") { |file| file_code = file }
+    parser.on("-v", "--version", "Display version") do
+      puts "scrptlb #{VERSION}"
+      exit
+    end
     parser.on("-h", "--help", "Show this help") do
       puts parser
       exit
