@@ -29,8 +29,11 @@ module Scrptlb
   end
 
   stack = Lua.load
+  # Loads modules
   stack.set_global "http", HttpLua.new
   stack.set_global "time", TimeLua.new
+  stack.set_global "regex", RegexLua.new
+  stack.set_global "shell", ShellLua.new
 
   code = ENV["CODE"]?;
 

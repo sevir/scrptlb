@@ -18,7 +18,7 @@ scrptlb --help
 
 ## Development
 
-TODO: Write development instructions here
+Tested since Crystal 0.7 to 1.4.1
 
 ## Contributing
 
